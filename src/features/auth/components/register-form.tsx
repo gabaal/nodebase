@@ -33,10 +33,10 @@ const registerSchema = z.object({
     password: z.string().min(1, 'Password is required'),
     confirmPassword: z.string()
 })
-.refine ((data) => data.password === data.confirmPassword, {
-    message: "Passwords do not match",
-    path: ["confirmPassword"]
-})
+    .refine((data) => data.password === data.confirmPassword, {
+        message: "Passwords do not match",
+        path: ["confirmPassword"]
+    })
 
 type RegisterFormValues = z.infer<typeof registerSchema>
 
@@ -57,16 +57,18 @@ export function RegisterForm() {
             name: values.email.split('@')[0],
             email: values.email,
             password: values.password,
-            callbackURL:'/'
+            callbackURL: '/'
         },
-        {onSuccess: () => {
-            router.push('/')
-            toast.success('Account created successfully')
-        },
-    onError: (ctx) => {
-        toast.error(ctx.error.message)
-    }}
-    )
+            {
+                onSuccess: () => {
+                    router.push('/')
+                    toast.success('Account created successfully')
+                },
+                onError: (ctx) => {
+                    toast.error(ctx.error.message)
+                }
+            }
+        )
     }
 
     const isPending = form.formState.isSubmitting
@@ -87,8 +89,12 @@ export function RegisterForm() {
                         <form onSubmit={form.handleSubmit(onSubmit)}>
                             <div className="grid gap-6">
                                 <div className="flex flex-col gap-4">
-                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>Continue with GitHub</Button>
-                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>Continue with Google</Button>
+                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>
+                                        <Image alt='github logo' width={20} height={20} src='/logos/github.svg' />
+                                        Continue with GitHub</Button>
+                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>
+                                        <Image alt='google logo' width={20} height={20} src='/logos/google.svg' />
+                                        Continue with Google</Button>
                                 </div>
                                 <div className='grid gap-6'>
                                     <FormField

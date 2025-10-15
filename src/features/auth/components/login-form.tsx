@@ -82,8 +82,12 @@ export function LoginForm() {
                         <form onSubmit={form.handleSubmit(onSubmit)}>
                             <div className="grid gap-6">
                                 <div className="flex flex-col gap-4">
-                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>Continue with GitHub</Button>
-                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>Continue with Google</Button>
+                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>
+                                        <Image alt='github logo' width={20} height={20} src='/logos/github.svg'/>
+                                        Continue with GitHub</Button>
+                                    <Button variant="outline" className='w-full' type="button" disabled={isPending}>
+                                        <Image alt='google logo' width={20} height={20} src='/logos/google.svg'/>
+                                        Continue with Google</Button>
                                 </div>
                                 <div className='grid gap-6'>
                                     <FormField
