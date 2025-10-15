@@ -1,13 +1,21 @@
-import { Button } from "@/components/ui/button";
-import {caller} from '@/trpc/server';
+import { Button } from "@/components/ui/button"
+import { requireAuth } from "@/lib/auth-utils"
+import { caller } from "@/trpc/server"
+import { LogoutButton } from "./logout"
 
-export default async function Home() {
-const users = await caller.getUsers();
-console.log(users);
+
+const page = async () => {
+  await requireAuth()
+  
+  const data = await caller.getUsers()
   return (
-    <div>
-      <h1 className="text-5xl">Gerald</h1>
-      <Button className="bg-red-600">Button</Button>
+    <div className="min-h-screen min-w-screen flex items-center justify-center flex-col gap-y-6">
+      protected server component
+      <div>
+        {JSON.stringify(data, null, 2)}
+      </div>
+      <LogoutButton />
     </div>
-  );
+  )
 }
+export default page
