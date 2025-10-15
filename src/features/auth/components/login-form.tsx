@@ -71,7 +71,7 @@ export function LoginForm() {
             <Card>
                 <CardHeader className="text-center">
                     <CardTitle>
-                        Welcome back
+                        Welcome Back
                     </CardTitle>
                     <CardDescription>
                         Login to continue
