@@ -6,6 +6,7 @@ import { caller } from "@/trpc/server"
 import { LogoutButton } from "./logout"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useTRPC } from "@/trpc/client"
+import { toast } from "sonner"
 
 
 const page = () => {
@@ -14,7 +15,9 @@ const page = () => {
   const queryClient = useQueryClient()
   const {data} = useQuery(trpc.getWorkflows.queryOptions())
 
-  const testAi = useMutation(trpc.testAi.mutationOptions())
+  const testAi = useMutation(trpc.testAi.mutationOptions({onError: () => {
+    toast.error('error testing AI, check console')
+  }}))
 
 
 const create = useMutation(trpc.createWorkflow.mutationOptions({
