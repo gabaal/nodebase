@@ -4,7 +4,7 @@ import "./globals.css";
 import { TRPCReactProvider } from "@/trpc/client";
 import { Toaster } from "@/components/ui/sonner";
 import { NuqsAdapter } from 'nuqs/adapters/next/app'
-
+import { Provider } from "jotai";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -32,7 +32,10 @@ export default function RootLayout({
       >
         <TRPCReactProvider>
           <NuqsAdapter>
-          {children}</NuqsAdapter>
+            <Provider>{children}</Provider>
+          {children}
+          
+          </NuqsAdapter>
           <Toaster/>
         </TRPCReactProvider>
         

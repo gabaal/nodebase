@@ -8,7 +8,6 @@ export const AddNodeButton = memo(()=> {
     return (
         <NodeSelector open = {selectorOpen} onOpenChange={setSelectorOpen}>
         <Button
-        onClick={()=>{}}
         size='icon'
         variant='outline'
         className="bg-background"><PlusIcon/></Button></NodeSelector>
