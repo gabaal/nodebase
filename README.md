@@ -1,13 +1,3 @@
+ npx prisma migrate dev
 
-
-generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
-}
-
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
-
+ npx inngest-cli@latest dev
