@@ -13,6 +13,11 @@ export const execute = inngest.createFunction(
       model: google('gemini-2.5-flash'),
       system: 'You are a helpful assistant.',
       prompt: "what is 2 + 2?",
+      experimental_telemetry: {
+        recordInputs: true,
+        recordOutputs: true,  
+        isEnabled: true,
+      }
     })
     return steps
   },
