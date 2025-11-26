@@ -1,4 +1,4 @@
  npx prisma migrate dev
 
  npx inngest-cli@latest dev
-5:26
+6:15
